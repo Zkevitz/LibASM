@@ -9,23 +9,23 @@ section .text
 
 ft_write:
     push rbp
-    mov rbp, rsp
-    mov rax, WRITE_SYSCALL
-    syscall
+    mov rbp, rsp                    ; save stack context
+    mov rax, WRITE_SYSCALL          ; syscall write number
+    syscall                         ; invoke syscall
 
-    cmp rax, 0
-    jl error
-    leave
-    ret
+    cmp rax, 0                      ; compare return of syscall with 0
+    jl error                        ; if negative, jump to error
+    leave                           ; restore stack context
+    ret                             ; return
 
 error:
-    neg rax
-    mov rdi, rax
-    call [rel __errno_location wrt ..got]
-    mov [rax], rdi
-    mov rax, -1
-    leave
-    ret
+    neg rax                         ; negate return value
+    mov rdi, rax                    ; move negated value to rdi
+    call [rel __errno_location wrt ..got]       ; get address of errno
+    mov [rax], rdi                              ; store negated value in errno
+    mov rax, -1                                 ; return -1
+    leave                                       ; restore stack context
+    ret                                         ; return
 
 
 ; Warning remove

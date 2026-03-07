@@ -12,7 +12,10 @@ SRCDIR = src
 OBJDIR = obj
 
 SRC = ft_strlen.s \
-		ft_write.s
+		ft_write.s \
+		ft_strcpy.s \
+		ft_strcmp.s \
+		ft_read.s
 OBJ = $(SRC:%.s=$(OBJDIR)/%.o)
 
 
