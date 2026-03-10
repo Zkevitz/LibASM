@@ -12,16 +12,17 @@ ft_strcpy :
     jmp .loop           ; jump to loop
 
 .loop:
-    mov al, [rsi]       ; load byte from source
-    mov [rdi], al       ; store byte to destination
+    mov cl, [rsi]       ; load byte from source
+    mov [rdi], cl       ; store byte to destination
 
     inc rsi             ; increment source pointer
     inc rdi             ; increment destination pointer
 
-    cmp al, 0           ; compare byte with null terminator
+    cmp cl, 0           ; compare byte with null terminator
     jne .loop           ; if not equal, continue loop
 
     leave               ; restore stack context
+    ret
 
 ; Warning remove
 section .note.GNU-stack noalloc noexec nowrite progbits

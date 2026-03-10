@@ -9,6 +9,7 @@ extern ssize_t ft_write(int fd, const void *buf, size_t count);
 extern char *ft_strcpy(char *dest, char *src);
 extern int ft_strcmp(char *s1, char *s2);
 extern ssize_t ft_read(int fd, void *buf, size_t count);
+extern char *ft_strdup(const char *s);
 
 // Test ft_strlen
 // int main() {
@@ -47,14 +48,14 @@ extern ssize_t ft_read(int fd, void *buf, size_t count);
 //     return 0;
 // }
 
-// Test ft_strcpy
+// //Test ft_strcpy
 // int main() {
 //     char dest[100];
 //     char dest2[100];
 //     char *src = "Hello World";
 //     char *src2 = "";
     
-//     ft_strcpy(dest, src);
+//     char *dest3 = ft_strcpy(dest, src);
 //     printf("ft_strcpy: %s\n", dest);
 
 //     ft_strcpy(dest, src2);
@@ -90,27 +91,35 @@ extern ssize_t ft_read(int fd, void *buf, size_t count);
 // }
 
 
-// Test ft_read
-int main(){
-    int fd = open("test.txt", O_RDONLY);
-    if (fd < 0) {
-        printf("Error opening file\n");
-        return 1;
-    }
-    char buf[150];
-    ssize_t rtn = ft_read(fd, buf, 150);
-    printf("ft_read: %ld\n", rtn);
-    printf("ft_read errno: %d\n", errno);
-    close(fd);
+// // Test ft_read
+// int main(){
+//     int fd = open("test.txt", O_RDONLY);
+//     if (fd < 0) {
+//         printf("Error opening file\n");
+//         return 1;
+//     }
+//     char buf[150];
+//     ssize_t rtn = ft_read(fd, buf, 150);
+//     printf("ft_read: %ld\n", rtn);
+//     printf("ft_read errno: %d\n", errno);
+//     close(fd);
     
-    fd = open("test.txt", O_RDONLY);
-    if (fd < 0) {
-        printf("Error opening file\n");
-        return 1;
-    }
-    rtn = read(fd, buf, 150);
-    printf("read: %ld\n", rtn);
-    printf("read errno: %d\n", errno);
-    close(fd);
-    return 0;
+//     fd = open("test.txt", O_RDONLY);
+//     if (fd < 0) {
+//         printf("Error opening file\n");
+//         return 1;
+//     }
+//     rtn = read(fd, buf, 150);
+//     printf("read: %ld\n", rtn);
+//     printf("read errno: %d\n", errno);
+//     close(fd);
+//     return 0;
+// }
+
+// Test Ft_strdup
+int main(){
+    char *s = "Hello le monde!";
+    printf("ft_strdup : %s\n", ft_strdup(s));
+
+    printf("strdup : %s\n", strdup(s));
 }
