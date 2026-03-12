@@ -26,6 +26,5 @@ ft_strdup :
     ret
 
 .return_null :
-    pop rdi
-    xor rax, rax
+    pop rdi                             ; annule la sauvegarde du parametres (push rdi)
     ret
